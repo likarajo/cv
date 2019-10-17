@@ -1,0 +1,127 @@
+---
+title: Rajarshi Chattopadhyay's Resume"
+author: Rajarshi Chattopadhyay
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    css: ['css/custom_resume.css', 'css/styles.css', 'resume']
+    # set it to true for a self-contained HTML page
+    self_contained: false
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(tidyverse)
+library(glue)
+
+# Set this to true to have links turned into footnotes at the end of the document
+PDF_EXPORT <- FALSE
+
+# Holds all the links that were inserted for placement at the end
+links <- c()
+
+source('parsing_functions.R')
+
+# Get the data filtered to only the items tagged as Resume items
+my_data <- read_csv('my_data.csv') %>%
+  filter(in_resume) %>% 
+  mutate(
+    # Build some custom sections by collapsing others
+    section = case_when(
+      section %in% c('industry_positions', 'projects') ~ 'work',
+      section %in% c('blogs', 'badges') ~ 'others',
+      TRUE ~ section
+    )
+  ) 
+
+```
+
+Aside
+================================================================================
+
+![logo](logo.png){width=100%}
+
+Contact {#contact}
+--------------------------------------------------------------------------------
+
+- <i class="fa fa-envelope"></i> likarajo@gmail.com
+- <i class="fa fa-linkedin"></i> www.linkedin.com/in/likarajo
+- <i class="fa fa-github"></i> github.com/likarajo
+- <i class="fa fa-link"></i> [likarajo.github.io](http://likarajo.github.io)
+- <i class="fa fa-phone"></i> (469) 380-2696
+
+Language Skills {#skills}
+--------------------------------------------------------------------------------
+
+```{r}
+skills <- tribble(
+  ~skill,                   ~level,
+  "Java, Python, Scala",    4,
+  "Spring, Spring Boot",    3,
+  "Hadoop, Spark",          3,
+  "Git, Jenkins, Docker",   3,
+  "SQL",                    3,
+  "HTML/CSS/JavaScript",    2
+)
+
+build_skill_bars(skills)
+```
+
+Project Showcase {#open-source}
+--------------------------------------------------------------------------------
+
+<i class="fab fa-github-alt"></i> `gitshowcase.com/likarajo`
+
+More info {#more-info}
+--------------------------------------------------------------------------------
+
+See full CV at `likarajo.github.io/cv` for complete list of positions and projects.
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Made w/ [**pagedown**](https://github.com/rstudio/pagedown) [github.com/nstrayer/cv](https://github.com/nstrayer/cv)
+
+Last updated on `r Sys.Date()`
+
+Main
+================================================================================
+
+Rajarshi Chattopadhyay {#title}
+--------------------------------------------------------------------------------
+
+```{r}
+intro_text <- "I am a Software Engineer having 4 years experience on [web application development (internship), application support (full-time job)](https://likarajo.github.io/WorkSamples), [applied machine learning (individual projects), Big Data management and analysis (academic project)](https://likarajo.github.io/Projects), and system designing (self-learned).
+As a Big Data enthusiast, I have undertaken [online training earning digital badges](https://www.youracclaim.com/user/likarajo) on Big Data technologies to stay relevant.
+I also take interest in designing highly scalable intelligent systems.
+
+Currently searching for a software engineer position that allows me to develop and improve software and build intelligent systems to positively impact the global community.
+"
+
+cat(sanitize_links(intro_text))
+```
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+my_data %>% print_section('education')
+```
+
+Selected Positions {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+```{r}
+my_data %>% print_section('positions')
+```
+
+Selected Projects {data-icon=newspaper}
+--------------------------------------------------------------------------------
+
+```{r}
+position_data %>% print_section('writings')
+```
