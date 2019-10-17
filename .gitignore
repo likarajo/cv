@@ -1,5 +1,8 @@
 .Rproj.user/
 *Rproj
 .Rhistory
+
 resume_files/
+
+.DS_Store
 .idea
