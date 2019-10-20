@@ -56,11 +56,11 @@ More Info
 ```{r}
 # When in export mode the little dots are unaligned, so fix that. 
 if(PDF_EXPORT){
-  cat("\nView my full CV with complete list of positions and projects at [likarajo.github.io/cv](https://likarajo.github.io/cv)\n")
-  cat("\nView this Resume online at [likarajo.github.io/cv/resume.html](https://likarajo.github.io/cv/resume.html)\n")
+  cat("\nFor a complete list of my work and projects - \nView my CV online at [likarajo.github.io/cv](https://likarajo.github.io/cv)\n")
+  cat("\nView this Resume online at [likarajo.github.io/cv/resume](https://likarajo.github.io/cv/resume)\n")
 } else {
-  cat("\nPlease refer to my full CV for a complete list of my work and projects at [likarajo.github.io/cv](https://likarajo.github.io/cv)\n")
-  cat("\n[<i class='fas fa-download'></i> Download a PDF of this Resume](https://github.com/likarajo/cv/raw/master/rajarshi_resume.pdf)\n")
+  cat("\n[<i class='fas fa-download'></i>](https://github.com/likarajo/cv/raw/master/rajarshi_resume.pdf) Download a PDF of this Resume\n")
+  cat("\n[<i class='fa fa-external-link'></i>](https://likarajo.github.io/cv) View my CV for a complete list of my work and projects\n")
 }
 ```
 
