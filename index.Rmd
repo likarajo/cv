@@ -51,8 +51,10 @@ Aside
 # When in export mode the little dots are unaligned, so fix that. 
 if(PDF_EXPORT){
   cat("\nView this CV online at [likarajo.github.io/cv](https://likarajo.github.io/cv)\n")
+  cat("\nView my resume online at [likarajo.github.io/cv/resume](https://likarajo.github.io/cv/resume)\n")
 } else {
-  cat("\n[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/likarajo/cv/raw/master/rajarshi_cv.pdf)\n")
+  cat("\n[<i class='fas fa-download'></i>](https://github.com/likarajo/cv/raw/master/rajarshi_cv.pdf) Download a PDF of this CV\n")
+  cat("\n[<i class='fa fa-external-link'></i>](https://likarajo.github.io/cv/resume) View my single-page Resume\n")
 }
 ```
 
