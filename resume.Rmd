@@ -6,7 +6,7 @@ output:
   pagedown::html_resume:
     css: ['css/custom_resume.css', 'css/styles.css', 'resume']
     # set it to true for a self-contained HTML page
-    self_contained: false
+    self_contained: true
 ---
 
 ```{r, include=FALSE}
@@ -28,63 +28,79 @@ source('parsing_functions.R')
 
 # Get the data filtered to only the items tagged as Resume items
 my_data <- read_csv('my_data.csv') %>%
-  filter(in_resume) %>% 
-  mutate(
+  filter(in_resume) #%>% 
+  #mutate(
     # Build some custom sections by collapsing others
-    section = case_when(
-      section %in% c('industry_positions', 'projects') ~ 'work',
-      section %in% c('blogs', 'badges') ~ 'others',
-      TRUE ~ section
-    )
-  ) 
-
+    #section = case_when(
+      #section %in% c('jobs', 'projects') ~ 'work',
+      #TRUE ~ section
+    #)
+  #) 
 ```
 
 Aside
 ================================================================================
 
-![logo](logo.png){width=100%}
+Summary {#more-info}
+--------------------------------------------------------------------------------
+
+A Software Engineer having 4 years experience:<br>
+=> [internship on web application development, permanent job on application development and support](https://likarajo.github.io/WorkSamples)<br>
+=> [personal and academic projects on applied machine learning and Big Data management and analysis](https://likarajo.github.io/Projects)<br>
+=> self-learned system design fundamental<br>
+=> [online training and certifications](https://www.youracclaim.com/users/likarajo)<br>
+
+More Info
+--------------------------------------------------------------------------------
+
+```{r}
+# When in export mode the little dots are unaligned, so fix that. 
+if(PDF_EXPORT){
+  cat("\nView my full CV with complete list of positions and projects at [likarajo.github.io/cv](https://likarajo.github.io/cv)\n")
+  cat("\nView this Resume online at [likarajo.github.io/cv/resume.html](https://likarajo.github.io/cv/resume.html)\n")
+} else {
+  cat("\nPlease refer to my full CV for a complete list of my work and projects at [likarajo.github.io/cv](https://likarajo.github.io/cv)\n")
+  cat("\n[<i class='fas fa-download'></i> Download a PDF of this Resume](https://github.com/likarajo/cv/raw/master/rajarshi_resume.pdf)\n")
+}
+```
 
 Contact {#contact}
 --------------------------------------------------------------------------------
 
 - <i class="fa fa-envelope"></i> likarajo@gmail.com
-- <i class="fa fa-linkedin"></i> www.linkedin.com/in/likarajo
-- <i class="fa fa-github"></i> github.com/likarajo
+- <i class="fa fa-linkedin"></i> [linkedin.com/in/likarajo](https://www.linkedin.com/in/likarajo)
 - <i class="fa fa-link"></i> [likarajo.github.io](http://likarajo.github.io)
 - <i class="fa fa-phone"></i> (469) 380-2696
 
-Language Skills {#skills}
+Technical Skills {#skills}
 --------------------------------------------------------------------------------
 
-```{r}
-skills <- tribble(
-  ~skill,                   ~level,
-  "Java, Python, Scala",    4,
-  "Spring, Spring Boot",    3,
-  "Hadoop, Spark",          3,
-  "Git, Jenkins, Docker",   3,
-  "SQL",                    3,
-  "HTML/CSS/JavaScript",    2
-)
+*Lang*: Java, Python, Scala<br>
+*Web*: Spring, Spring Boot<br>
+*Big Data*: Hadoop, Spark<br>
+*DevOps*: Git, Jenkins, Docker<br>
+*Database*: SQL, NoSQL<br>
+*Front End*: HTML/CSS/JS<br>
+*Cloud*: AWS S3/EC2/EMR, Elastic<br>
 
-build_skill_bars(skills)
-```
-
-Project Showcase {#open-source}
+Links to my work{#open-source}
 --------------------------------------------------------------------------------
 
-<i class="fab fa-github-alt"></i> `gitshowcase.com/likarajo`
+My Project repositories:<br>
+<i class="fa fa-github"></i> [github.com/likarajo](https://github.com/likarajo)<br>
+<i class="fab fa-github-alt"></i> [gitshowcase.com/likarajo](https://gitshowcase.com/likarajo)<br>
 
-More info {#more-info}
---------------------------------------------------------------------------------
+My Digital credentials:<br>
+<i class="fa fa-certificate"></i> [youracclaim.com/users/likarajo](https://www.youracclaim.com/users/likarajo)<br>
 
-See full CV at `likarajo.github.io/cv` for complete list of positions and projects.
+My Blogs and Articles: <br>
+<i class="fa fa-wordpress"></i> [likarajoblogs.wordpress.com](https://likarajoblogs.wordpress.com)<br>
+_Also in my LinkedIn profile articles_
 
 Disclaimer {#disclaimer}
 --------------------------------------------------------------------------------
 
-Made w/ [**pagedown**](https://github.com/rstudio/pagedown) [github.com/nstrayer/cv](https://github.com/nstrayer/cv)
+Made w/ [**pagedown**](https://github.com/rstudio/pagedown) | [<i class="fa fa-github"></i>](https://github.com/likarajo/cv)
 
 Last updated on `r Sys.Date()`
 
@@ -94,18 +110,7 @@ Main
 Rajarshi Chattopadhyay {#title}
 --------------------------------------------------------------------------------
 
-```{r}
-intro_text <- "I am a Software Engineer having 4 years experience on [web application development (internship), application support (full-time job)](https://likarajo.github.io/WorkSamples), [applied machine learning (individual projects), Big Data management and analysis (academic project)](https://likarajo.github.io/Projects), and system designing (self-learned).
-As a Big Data enthusiast, I have undertaken [online training earning digital badges](https://www.youracclaim.com/user/likarajo) on Big Data technologies to stay relevant.
-I also take interest in designing highly scalable intelligent systems.
-
-Currently searching for a software engineer position that allows me to develop and improve software and build intelligent systems to positively impact the global community.
-"
-
-cat(sanitize_links(intro_text))
-```
-
-Education {data-icon=graduation-cap data-concise=true}
+Recent Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
 ```{r}
@@ -116,12 +121,12 @@ Selected Positions {data-icon=suitcase}
 --------------------------------------------------------------------------------
 
 ```{r}
-my_data %>% print_section('positions')
+my_data %>% print_section('jobs')
 ```
 
-Selected Projects {data-icon=newspaper}
+Selected Projects {data-icon=chart-line}
 --------------------------------------------------------------------------------
 
 ```{r}
-position_data %>% print_section('writings')
+my_data %>% print_section('projects')
 ```

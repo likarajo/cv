@@ -1,6 +1,6 @@
 ---
 title: "Rajarshi Chattopadhyay's CV"
-author: Rajarshi Chattopadhyay
+author: "Rajarshi Chattopadhyay"
 date: "`r Sys.Date()`"
 output:
   pagedown::html_resume:
@@ -50,46 +50,36 @@ Aside
 ```{r}
 # When in export mode the little dots are unaligned, so fix that. 
 if(PDF_EXPORT){
-  cat("View this CV online at _likarajo.github.io/cv_")
+  cat("\nView this CV online at [likarajo.github.io/cv](https://likarajo.github.io/cv)\n")
 } else {
-  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/likarajo/cv/raw/master/rajarshi_cv.pdf)")
+  cat("\n[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/likarajo/cv/raw/master/rajarshi_cv.pdf)\n")
 }
 ```
 
 Contact {#contact}
 --------------------------------------------------------------------------------
 
+- <i class="fa fa-envelope"></i>  likarajo@gmail.com
+- <i class="fa fa-linkedin"></i>  [linkedin.com/in/likarajo](https://www.linkedin.com/in/likarajo)
+- <i class="fa fa-github"></i>  [github.com/likarajo](https://github.com/likarajo)
+- <i class="fa fa-link"></i>  [likarajo.github.io](http://likarajo.github.io)
+- <i class="fa fa-phone"></i>  (469) 380-2696
 
-- <i class="fa fa-envelope"></i> likarajo@gmail.com
-- <i class="fa fa-linkedin"></i> www.linkedin.com/in/likarajo
-- <i class="fa fa-github"></i> github.com/likarajo
-- <i class="fa fa-link"></i> [likarajo.github.io](http://likarajo.github.io)
-- <i class="fa fa-phone"></i> (469) 380-2696
-
-
-
-Language Skills {#skills}
+Technical Skills {#skills}
 --------------------------------------------------------------------------------
 
-```{r}
-skills <- tribble(
-  ~skill,                   ~level,
-  "Java, Python, Scala",    4,
-  "Spring, Spring Boot",    3,
-  "Hadoop, Spark",          3,
-  "Git, Jenkins, Docker",   3,
-  "SQL",                    3,
-  "HTML/CSS/JavaScript",    2
-)
-
-build_skill_bars(skills)
-```
+*Lang*: Java, Python, Scala<br>
+*Web*: Spring, Spring Boot<br>
+*Big Data*: Hadoop, Spark<br>
+*DevOps*: Git, Jenkins, Docker<br>
+*Database*: SQL, NoSQL<br>
+*Front End*: HTML/CSS/JavaScript<br>
+*Cloud*: AWS S3 EC2 EMR, Elastic<br>
 
 Disclaimer {#disclaimer}
 --------------------------------------------------------------------------------
 
-Made w/ [**pagedown**](https://github.com/rstudio/pagedown) [<i class="fa fa-github"></i>](https://github.com/likarajo/cv)
-
+Made w/ [**pagedown**](https://github.com/rstudio/pagedown) [<i class="fa fa-github"></i>](https://github.com/likarajo/cv)<br>
 Last updated on `r Sys.Date()`
 
 Main
@@ -99,11 +89,12 @@ Rajarshi Chattopadhyay {#title}
 --------------------------------------------------------------------------------
 
 ```{r}
-intro_text <- "I am a Software Engineer having 4 years experience on [web application development (internship), application support (full-time job)](https://likarajo.github.io/WorkSamples), [applied machine learning (individual projects), Big Data management and analysis (academic project)](https://likarajo.github.io/Projects), and system designing (self-learned).
+intro_text <- "I am a Software Engineer having 4 years experience: <br>
+[internship on web application development, permanent job on application development and support](https://likarajo.github.io/WorkSamples), [personal and academic projects on applied machine learning and Big Data management and analysis](https://likarajo.github.io/Projects), and self-learned system design fundamentals.<br>
 As a Big Data enthusiast, I have undertaken [online training earning digital badges](https://www.youracclaim.com/user/likarajo) on Big Data technologies to stay relevant.
 I also take interest in designing highly scalable intelligent systems.
 
-Currently searching for a software engineer position that allows me to develop and improve software and build intelligent systems to positively impact the global community.
+*Currently searching for a software engineer position that allows me to develop and improve software and build intelligent systems to positively impact the global community.*
 "
 
 cat(sanitize_links(intro_text))
@@ -119,61 +110,69 @@ print_section(my_data, 'education')
 Professional Experience {data-icon=suitcase}
 --------------------------------------------------------------------------------
 
-::: aside
-I have worked in a variety of roles of legacy application developer, software systems engineer, web application developer, and IT infrastructure automation engineer.
-I like collaborative environments where I can learn from my peers and senior engineers.
-:::
-
 ```{r}
-print_section(my_data, 'industry_positions')
+print_section(my_data, 'jobs')
 ```
 
-<br>
-<br>
-<br>
-
-Selected Projects {data-icon=chart-line}
+Projects {data-icon=chart-line}
 --------------------------------------------------------------------------------
 
 ::: aside
-I am have developed multiple side projects on various technologies
+I have developed multiple side projects on various technologies based on the knowledge gained through academic course work and personal effort
+<br><br>
+Have a look at my projects here:
+<br><br>
+<i class="fa fa-github"></i>  [github.com/likarajo](https://www.github.com/likarajo)
+<br>
+<i class="fa fa-github-alt"></i>  [gitshowcase.com/likarajo](https://www.gitshowcase.com/likarajo)
 :::
 
 ```{r}
 print_section(my_data, 'projects')
 ```
 
-Selected Writings {data-icon=chart-line}
+Writings {data-icon=pen}
 --------------------------------------------------------------------------------
 
 ::: aside
-I blog about what I learn and speculate to let others benefit from it and collaborate.
+I blog about what I learn and beleieve to let others benefit from it and collaborate.
+<br><br>
+Have a look at my writings here:
+<br><br>
+<i class="fa fa-linkedin"></i>  [LinkedIn Articles](https://www.linkedin.com/in/likarajo/detail/recent-activity/posts/)
+<br>
+<i class="fa fa-wordpress"></i>  [likarajoblogs.wordpress.com](https://likarajoblogs.wordpress.com)
 :::
 
 ```{r}
 print_section(my_data, 'blogs')
 ```
 
-Selected Digital Credentials (By)  {data-icon=badge}
+Digital Credentials {data-icon=certificate}
 --------------------------------------------------------------------------------
 
 ::: aside
-I like to keep myself up-to-date with the latest technologies and through online training and certifications.
+
+I like to keep myself up-to-date with the latest technologies, through online training and certifications.
+<br><br>
+Have a look at my earned digital credentials here:
+<br><br>
+<i class="fa fa-certificate"></i> [youracclaim.com/users/likarajo](https://www.youracclaim.com/users/likarajo)
 :::
 
 ```{r}
 print_section(my_data, 'badges')
 ```
 
-Teaching Experience {data-icon=chalkboard-teacher}
+Knowledge Transfer {data-icon=chalkboard-teacher}
 --------------------------------------------------------------------------------
 
 ::: aside
-I am passionate about sharing my knowledge with others. I believe that to teach is to learn twice. I have delivered at workshops at my college as well provided KT in workshops at work.
+I am passionate about sharing my knowledge with others. I believe that to teach is to learn twice. I have delivered at workshops at my college and at work.
 :::
 
 ```{r}
-print_section(my_data, 'teaching_positions')
+print_section(my_data, 'kt')
 ```
 
 ```{r}

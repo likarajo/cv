@@ -5,7 +5,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   line-height: 1.3;
-  color: #444;
+  color: #474747;
 }
 
 /* Give headers playfair font */
@@ -14,6 +14,11 @@ h2,
 h3 {
   font-family: "Playfair Display", serif;
   color: #000;
+}
+
+/* Make linked Purple */
+a {
+  color: #7F20FC;
 }
 
 /* When in PDF export mode make sure superscripts are nice and small and italic */
@@ -35,11 +40,11 @@ sup {
 
 /* Customize some of the sizing variables */
 :root {
-  --sidebar-width: 12rem; /* Shrink sidebar width  */
-  --sidebar-background-color: #f7fbff; /* Make sidebar blue */
+  --sidebar-width: 13rem; /* Shrink sidebar width  */
+  --sidebar-background-color: #F9F2FF; /* Make sidebar light purple */
   --sidebar-horizontal-padding: 0.01in; /* Reduce sidebar padding */
   --decorator-outer-dim: 10px; /* Make position deliniating circles larger */
-  --decorator-border: 2px solid #bdd7e7; /* Make timeline a blue as well*/
+  --decorator-border: 2px solid #D5BAF9; /* Make timeline a purple as well*/
 }
 
 .details .place {
@@ -50,7 +55,7 @@ sup {
   padding-top: 0.005rem;
 }
 
-/* Laptop icon isn't centered by default which is lame */
+/* Laptop icon isn't centered by default */
 .fa-laptop {
   margin-left: -3px;
 }
@@ -83,9 +88,9 @@ sup {
   font-size: 0.75rem;
 }
 
-/* Make little circle outline be a light blue */
+/* Make little circle outline be dark purple */
 .decorator::after {
-  background-color: #08306b;
+  background-color: #47086B;
 }
 
 /* Remove the fake bullets from lists */
