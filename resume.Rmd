@@ -88,7 +88,7 @@ Links to my work{#open-source}
 
 My Project repositories:<br>
 <i class="fa fa-github"></i> [github.com/likarajo](https://github.com/likarajo)<br>
-<i class="fab fa-github-alt"></i> [gitshowcase.com/likarajo](https://gitshowcase.com/likarajo)<br>
+<i class="fab fa-github-alt"></i> [likarajo.github.io/Projects](https://likarajo.github.io/Projects)<br>
 
 My Digital credentials:<br>
 <i class="fa fa-certificate"></i> [youracclaim.com/users/likarajo](https://www.youracclaim.com/users/likarajo)<br>

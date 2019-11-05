@@ -126,12 +126,14 @@ Have a look at my projects here:
 <br><br>
 <i class="fa fa-github"></i>  [github.com/likarajo](https://www.github.com/likarajo)
 <br>
-<i class="fa fa-github-alt"></i>  [gitshowcase.com/likarajo](https://www.gitshowcase.com/likarajo)
+<i class="fa fa-github-alt"></i>  [likarajo.github.io/Projects](https://likarajo.github.io/Projects)
 :::
 
 ```{r}
 print_section(my_data, 'projects')
 ```
+
+<br><br><br>
 
 Writings {data-icon=pen}
 --------------------------------------------------------------------------------
