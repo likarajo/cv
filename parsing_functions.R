@@ -46,10 +46,154 @@ strip_links_from_cols <- function(data, cols_to_strip){
 
 # Take a position dataframe and the section id desired
 # and prints the section to markdown. 
-print_section <- function(position_data, section_id){
+print_portfolio_r <- function(position_data, section_id){
   position_data %>% 
     filter(section == section_id) %>% 
-    arrange(desc(end)) %>% 
+    arrange(priority) %>% 
+    mutate(id = 1:n()) %>% 
+    pivot_longer(
+      starts_with('description'),
+      names_to = 'description_num',
+      values_to = 'description',
+      values_drop_na = TRUE
+    ) %>% 
+    group_by(id) %>% 
+    mutate(
+      descriptions = list(description)
+    ) %>% 
+    ungroup() %>% 
+    filter(description_num == 'description_1') %>% 
+    mutate(
+      timeline = ifelse(
+        is.na(start) | start == end,
+        end,
+        glue('{end} - {start}')
+      ),
+      description_bullets = map_chr(descriptions, ~paste('-', ., collapse = '\n')),
+    ) %>% 
+    strip_links_from_cols(c('title', 'description_bullets')) %>% 
+    strip_links_from_cols(c('tech', 'description_bullets')) %>%
+    strip_links_from_cols(c('repo', 'description_bullets')) %>% 
+    strip_links_from_cols(c('link', 'description_bullets')) %>% 
+    mutate_all(~ifelse(is.na(.), 'N/A', .)) %>% 
+    glue_data(
+      "### {title}",
+      "\n\n",
+      "{loc}",
+      "\n\n",
+      "{institution}",
+      "\n\n",
+      "{timeline}", 
+      "\n\n",
+      "{description_bullets}",
+      "\n\n",
+      "*{tech}*",
+      "\n\n",
+      "Repo:&nbsp;***{repo}***, Link:&nbsp;***{link}***",
+      "\n\n",
+    )
+}
+
+print_portfolio <- function(position_data, section_id){
+  position_data %>% 
+    filter(section == section_id) %>% 
+    arrange(priority) %>% 
+    mutate(id = 1:n()) %>% 
+    pivot_longer(
+      starts_with('description'),
+      names_to = 'description_num',
+      values_to = 'description',
+      values_drop_na = TRUE
+    ) %>% 
+    group_by(id) %>% 
+    mutate(
+      descriptions = list(description)
+    ) %>% 
+    ungroup() %>% 
+    filter(description_num == 'description_1') %>% 
+    mutate(
+      timeline = ifelse(
+        is.na(start) | start == end,
+        end,
+        glue('{end} - {start}')
+      ),
+      description_bullets = map_chr(descriptions, ~paste('-', ., collapse = '\n')),
+    ) %>% 
+    strip_links_from_cols(c('title', 'description_bullets')) %>% 
+    strip_links_from_cols(c('tech', 'description_bullets')) %>%
+    strip_links_from_cols(c('repo', 'description_bullets')) %>% 
+    strip_links_from_cols(c('link', 'description_bullets')) %>% 
+    mutate_all(~ifelse(is.na(.), 'N/A', .)) %>% 
+    glue_data(
+      "### {title}",
+      "\n\n",
+      "{loc}",
+      "\n\n",
+      "{institution}",
+      "\n\n",
+      "{timeline}", 
+      "\n\n",
+      "{description_bullets}",
+      "\n\n",
+      "Tech/Skills: *{tech}*",
+      "\n\n",
+      "Repo: ***{repo}***",
+      "\n\n",
+      "Link: ***{link}***",
+      "\n\n",
+    )
+}
+
+print_blog <- function(position_data, section_id){
+  position_data %>% 
+    filter(section == section_id) %>% 
+    arrange(priority) %>% 
+    mutate(id = 1:n()) %>% 
+    pivot_longer(
+      starts_with('description'),
+      names_to = 'description_num',
+      values_to = 'description',
+      values_drop_na = TRUE
+    ) %>% 
+    group_by(id) %>% 
+    mutate(
+      descriptions = list(description)
+    ) %>% 
+    ungroup() %>% 
+    filter(description_num == 'description_1') %>% 
+    mutate(
+      timeline = ifelse(
+        is.na(start) | start == end,
+        end,
+        glue('{end} - {start}')
+      ),
+      description_bullets = map_chr(descriptions, ~paste('-', ., collapse = '\n')),
+    ) %>% 
+    strip_links_from_cols(c('title', 'description_bullets')) %>% 
+    strip_links_from_cols(c('tech', 'description_bullets')) %>%
+    strip_links_from_cols(c('repo', 'description_bullets')) %>% 
+    strip_links_from_cols(c('link', 'description_bullets')) %>% 
+    mutate_all(~ifelse(is.na(.), 'N/A', .)) %>% 
+    glue_data(
+      "### {title}",
+      "\n\n",
+      "{loc}",
+      "\n\n",
+      "{institution}",
+      "\n\n",
+      "{timeline}", 
+      "\n\n",
+      "{description_bullets}",
+      "\n\n",
+      "***{link}***",
+      "\n\n",
+    )
+}
+
+print_position <- function(position_data, section_id){
+  position_data %>% 
+    filter(section == section_id) %>% 
+    arrange(priority) %>% 
     mutate(id = 1:n()) %>% 
     pivot_longer(
       starts_with('description'),
@@ -83,6 +227,96 @@ print_section <- function(position_data, section_id){
       "{timeline}", 
       "\n\n",
       "{description_bullets}",
+      "\n\n",
+    )
+}
+
+print_extn <- function(position_data, section_id){
+  position_data %>% 
+    filter(section == section_id) %>% 
+    arrange(priority) %>% 
+    mutate(id = 1:n()) %>% 
+    pivot_longer(
+      starts_with('description'),
+      names_to = 'description_num',
+      values_to = 'description',
+      values_drop_na = TRUE
+    ) %>% 
+    group_by(id) %>% 
+    mutate(
+      descriptions = list(description)
+    ) %>% 
+    ungroup() %>% 
+    filter(description_num == 'description_1') %>% 
+    mutate(
+      timeline = ifelse(
+        is.na(start) | start == end,
+        end,
+        glue('{end} - {start}')
+      ),
+      description_bullets = map_chr(descriptions, ~paste('-', ., collapse = '\n')),
+    ) %>% 
+    strip_links_from_cols(c('title', 'description_bullets')) %>% 
+    strip_links_from_cols(c('tech', 'description_bullets')) %>%
+    mutate_all(~ifelse(is.na(.), 'N/A', .)) %>% 
+    glue_data(
+      "### {title}",
+      "\n\n",
+      "{loc}",
+      "\n\n",
+      "{institution}",
+      "\n\n",
+      "{timeline}", 
+      "\n\n",
+      "{description_bullets}",
+      "\n\n",
+      "Tech/Skills: *{tech}*",
+      "\n\n\n",
+    )
+}
+
+print_badge <- function(position_data, section_id){
+  position_data %>% 
+    filter(section == section_id) %>% 
+    arrange(priority) %>% 
+    mutate(id = 1:n()) %>% 
+    pivot_longer(
+      starts_with('description'),
+      names_to = 'description_num',
+      values_to = 'description',
+      values_drop_na = TRUE
+    ) %>% 
+    group_by(id) %>% 
+    mutate(
+      descriptions = list(description)
+    ) %>% 
+    ungroup() %>% 
+    filter(description_num == 'description_1') %>% 
+    mutate(
+      timeline = ifelse(
+        is.na(start) | start == end,
+        end,
+        glue('{end} - {start}')
+      ),
+      description_bullets = map_chr(descriptions, ~paste('-', ., collapse = '\n')),
+    ) %>% 
+    strip_links_from_cols(c('title', 'description_bullets')) %>% 
+    strip_links_from_cols(c('tech', 'description_bullets')) %>%
+    mutate_all(~ifelse(is.na(.), 'N/A', .)) %>% 
+    glue_data(
+      "### {title}",
+      "\n\n",
+      "{loc}",
+      "\n\n",
+      "{institution}",
+      "\n\n",
+      "{timeline}", 
+      "\n\n",
+      "{description_bullets}",
+      "\n\n",
+      "Tech/Skills: *{tech}*",
+      "\n\n",
+      "Link:**{link}**",
       "\n\n\n",
     )
 }
@@ -102,4 +336,3 @@ build_skill_bars <- function(skills, out_of = 5){
       "</div>"
     )
 }
-

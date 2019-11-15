@@ -1,0 +1,85 @@
+---
+title: "Portfolio"
+author: "Rajarshi Chattopadhyay"
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    css: ['css/styles_portfolio.css', 'resume']
+    # set it to true for a self-contained HTML page
+    self_contained: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(glue)
+library(tidyverse)
+
+# Set this to true to have links turned into footnotes at the end of the document
+PDF_EXPORT <- FALSE
+
+# Holds all the links that were inserted for placement at the end
+links <- c()
+
+source('parsing_functions.R')
+
+# Load csv with portfolio info
+my_data <- read_csv('my_data.csv') %>%
+  filter(in_portfolio)
+```
+
+Main
+================================================================================
+
+Rajarshi Chattopadhyay {#title}
+--------------------------------------------------------------------------------
+<hr>
+<br>
+<i class="fa fa-github"></i> GitHub:  [github.com/likarajo](https://github.com/likarajo)
+<br>
+<i class="fas fa-globe"></i> Website:  [likarajo.github.io](http://likarajo.github.io)
+<br>
+<i class="fa fa-github-alt"></i> Portfolio:  [likarajo.github.io/Projects](https://likarajo.github.io/Projects)
+<br>
+<i class="fa fa-linkedin"></i> LinkedIn:  [linkedin.com/in/likarajo](https://www.linkedin.com/in/likarajo)
+<br>
+<i class="fa fa-linkedin"></i> Articles: [LinkedIn Articles](https://www.linkedin.com/in/likarajo/detail/recent-activity/posts/)
+<br>
+<i class="fa fa-wordpress"></i> Blogs:  [likarajoblogs.wordpress.com](https://likarajoblogs.wordpress.com)
+<br>
+<i class='fa fa-certificate'></i> Digital Badges: [youracclaim.com/users/likarajo](https://www.youracclaim.com/users/likarajo)
+<br>
+<i class='fa fa-file'></i> CV: [likarajo.github.io/cv](https://likarajo.github.io/cv)
+<br>
+<i class='fa fa-file'></i> Resume:  [likarajo.github.io/cv/resume](https://likarajo.github.io/cv/resume)
+<br>
+<i class="fa fa-envelope"></i> Email: [likarajo@gmail.com](mailto:likarajo@gmail.com)
+<br>
+<i class="fa fa-phone"></i> Phone: (469) 380-2696
+<br>
+<br>
+<hr>
+<br>
+
+Projects {data-icon=chart-line}
+--------------------------------------------------------------------------------
+
+```{r}
+print_portfolio(my_data, 'projects')
+```
+
+Writings {data-icon=pen}
+--------------------------------------------------------------------------------
+
+```{r}
+print_portfolio(my_data, 'blogs')
+```
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Made w/ [**pagedown**](https://github.com/rstudio/pagedown)<br>
+Last updated on `r Sys.Date()`

@@ -106,14 +106,14 @@ Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
 ```{r}
-print_section(my_data, 'education')
+print_position(my_data, 'education')
 ```
 
 Professional Experience {data-icon=suitcase}
 --------------------------------------------------------------------------------
 
 ```{r}
-print_section(my_data, 'jobs')
+print_position(my_data, 'jobs')
 ```
 
 Projects {data-icon=chart-line}
@@ -130,7 +130,7 @@ Have a look at my projects here:
 :::
 
 ```{r}
-print_section(my_data, 'projects')
+print_portfolio(my_data, 'projects')
 ```
 
 <br><br><br>
@@ -149,7 +149,7 @@ Have a look at my writings here:
 :::
 
 ```{r}
-print_section(my_data, 'blogs')
+print_blog(my_data, 'blogs')
 ```
 
 Digital Credentials {data-icon=certificate}
@@ -165,7 +165,7 @@ Have a look at my earned digital credentials here:
 :::
 
 ```{r}
-print_section(my_data, 'badges')
+print_badge(my_data, 'badges')
 ```
 
 Knowledge Transfer {data-icon=chalkboard-teacher}
@@ -176,22 +176,5 @@ I am passionate about sharing my knowledge with others. I believe that to teach 
 :::
 
 ```{r}
-print_section(my_data, 'kt')
-```
-
-```{r}
-if(PDF_EXPORT){
-  cat("
-  
-Links {data-icon=link}
---------------------------------------------------------------------------------
-
-<br>
-
-")
-  
-  walk2(links, 1:length(links), function(link, index){
-    print(glue('{index}. {link}'))
-  })
-}
+print_extn(my_data, 'kt')
 ```

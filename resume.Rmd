@@ -4,7 +4,7 @@ author: Rajarshi Chattopadhyay
 date: "`r Sys.Date()`"
 output:
   pagedown::html_resume:
-    css: ['css/custom_resume.css', 'css/styles.css', 'resume']
+    css: ['css/custom_resume.css', 'css/styles_resume.css', 'resume']
     # set it to true for a self-contained HTML page
     self_contained: true
 ---
@@ -114,19 +114,19 @@ Recent Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
 ```{r}
-my_data %>% print_section('education')
+my_data %>% print_position('education')
 ```
 
 Selected Positions {data-icon=suitcase}
 --------------------------------------------------------------------------------
 
 ```{r}
-my_data %>% print_section('jobs')
+my_data %>% print_position('jobs')
 ```
 
 Selected Projects {data-icon=chart-line}
 --------------------------------------------------------------------------------
 
 ```{r}
-my_data %>% print_section('projects')
+my_data %>% print_portfolio_r('projects')
 ```

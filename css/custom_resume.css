@@ -8,11 +8,11 @@
 }
 
 [data-id="main"] { 
-  padding: 0 0.05in 0 0.05in;
+  padding: 0 0 0 0;
 }
 
 [data-id="title"] {
-  margin: 0 0.5in 0.08in -0.5in;
+  margin: 0 0 0 0;
 }
 
 .main-block {
